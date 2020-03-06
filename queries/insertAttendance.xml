@@ -8,6 +8,8 @@
 		<column name="member_srl" var="member_srl" />
 		<column name="ipaddress" var="ipaddress" default="none" />
 		<column name="greetings" var="greetings" default="" />
+		<column name="wins" var="wins" default="" />
+		<column name="loses" var="loses" default="" />
 		<column name="today_point" var="today_point" />
 		<column name="today_random" var="today_random" default="0" />
 		<column name="att_random_set" var="att_random_set" default="0" />

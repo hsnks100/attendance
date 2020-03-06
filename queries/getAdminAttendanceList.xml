@@ -12,6 +12,8 @@
 		<column name="attendance.regdate" alias="regdate" />
 		<column name="attendance.member_srl" alias="member_srl" />
 		<column name="attendance.greetings" alias="greetings" />
+		<column name="attendance.wins" alias="wins" />
+		<column name="attendance.loses" alias="loses" />
 		<column name="attendance.today_point" alias="today_point" />
 		<column name="attendance.today_random" alias="today_random" />
 		<column name="attendance.ipaddress" alias="ipaddress" />

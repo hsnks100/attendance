@@ -72,8 +72,13 @@ class attendance extends ModuleObject
 		/** @var $oDB DBMysql */
 		$oDB = &DB::getInstance();
 		// This line start to add to database column list check.
-		if (!$oDB->isColumnExists("attendance", "greetings"))
-		{
+		if (!$oDB->isColumnExists("attendance", "greetings")) {
+			return true;
+		}
+		if (!$oDB->isColumnExists("attendance", "wins")) {
+			return true;
+		}
+		if (!$oDB->isColumnExists("attendance", "loses")) {
 			return true;
 		}
 		if (!$oDB->isColumnExists("attendance", "today_point"))
@@ -230,6 +235,14 @@ class attendance extends ModuleObject
 			$oDB->addColumn("attendance", "greetings", "varchar", 20);
 		}
 
+		if (!$oDB->isColumnExists("attendance", "wins"))
+		{
+			$oDB->addColumn("attendance", "wins", "number", 20);
+		}
+		if (!$oDB->isColumnExists("attendance", "loses"))
+		{
+			$oDB->addColumn("attendance", "loses", "number", 20);
+		}
 		if (!$oDB->isColumnExists("attendance", "today_point"))
 		{
 			$oDB->addColumn("attendance", "today_point", "number", 20);

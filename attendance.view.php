@@ -122,6 +122,7 @@ class attendanceView extends attendance
 		$date_info->day_max = date("t", mktime(0, 0, 0, $date_info->_month, 1, $date_info->_year));
 		$date_info->week_start = date("w", mktime(0, 0, 0, $date_info->_month, 1, $date_info->_year));
 
+        print_r($oAttendance);
 		Context::set('admin_date_info', $date_info);
 		Context::set('todaymygift', $outputs->data);
 		Context::set('selected_date', $selected_date);

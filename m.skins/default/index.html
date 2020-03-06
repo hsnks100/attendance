@@ -84,6 +84,7 @@
 				<h4>{$lgi->nick_name} 님은</a><block cond="$mi->logo_image"><img style="margin-bottom:-10px;" src="{$mi->logo_image}" />에서</block> 출석이 완료되었습니다.</h4>
 				출석은 하루 1회만 참여하실 수 있습니다. 내일 다시 출석해 주세요.^^
 			</div>
+            승버튼, 패버튼
 		<!--@end-->
  
 	    <!--//출석을 하지 않았고, 출석 가능한 시간대라면-->
@@ -143,6 +144,8 @@
 			<th scope="col" class="no">{$lang->position}</th>
 			<th scope="col"><span>{$lang->nick_name}</span></th>
             <th scope="col" class="title"><span>{$lang->greetings}</span></th>
+            <th scope="col" class="wins"><span>승</span></th>
+            <th scope="col" class="loses"><span>패</span></th>
 			<th scope="col"><span>{$lang->point}({$lang->random_point})</span></th>
         </tr>
         
@@ -208,6 +211,12 @@
                     
                     
                     
+                </td>
+                <td class="wins" align="left"> 
+                    {$data->wins}
+                </td>
+                <td class="loses" align="left"> 
+                    {$data->loses}
                 </td>
 
  

@@ -68,10 +68,10 @@ class attendanceController extends attendance
 		$oDB = DB::getInstance();
 		$oDB->begin();
 
-		if ($_SESSION['is_attended'] === $today)
-		{
-			return $this->makeObject(-1, 'attend_already_checked');
-		}
+		// if ($_SESSION['is_attended'] === $today)
+		// {
+		// 	return $this->makeObject(-1, 'attend_already_checked');
+		// }
 
 		$_SESSION['is_attended'] = $today;
 
@@ -199,6 +199,8 @@ class attendanceController extends attendance
 		$obj->continuity_point = $config->continuity_point;
 		$obj->today_point = $config->add_point;
 		$obj->greetings = $g_obj->greetings;
+		$obj->wins = 0;
+		$obj->loses = 0;
 		$obj->member_srl = $member_info->member_srl;
 		$position = $oAttendanceModel->getPositionData($today);
 
