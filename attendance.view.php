@@ -10,11 +10,11 @@ class attendanceView extends attendance
 
 	function init()
 	{
-		$template_path = sprintf("%sskins/%s/", $this->module_path, $this->module_info->skin);
+		$template_path = sprintf("%sm.skins/%s/", $this->module_path, $this->module_info->skin);
 		if (!is_dir($template_path) || !$this->module_info->skin)
 		{
 			$this->module_info->skin = 'default';
-			$template_path = sprintf("%sskins/%s/", $this->module_path, $this->module_info->skin);
+			$template_path = sprintf("%sm.skins/%s/", $this->module_path, $this->module_info->skin);
 		}
 		$this->setTemplatePath($template_path);
 	}
@@ -122,7 +122,7 @@ class attendanceView extends attendance
 		$date_info->day_max = date("t", mktime(0, 0, 0, $date_info->_month, 1, $date_info->_year));
 		$date_info->week_start = date("w", mktime(0, 0, 0, $date_info->_month, 1, $date_info->_year));
 
-        print_r($oAttendance);
+        // print_r($oAttendance);
 		Context::set('admin_date_info', $date_info);
 		Context::set('todaymygift', $outputs->data);
 		Context::set('selected_date', $selected_date);

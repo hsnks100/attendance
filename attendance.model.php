@@ -184,8 +184,20 @@ class attendanceModel extends attendance
 		$arg->today_point = $today_point;
 		$arg->member_srl = $member_srl;
 		$arg->greetings = $greetings;
-		$output = executeQuery('attendance.updateAttendance', $arg);
+		$output = executeQuery('attendance.updateAttendance', $arg); 
+		return $output;
+	}
 
+	/**
+	 * @param $attendance_srl
+	 * @param $type
+	 * @return object
+	 */
+	function updateWinsLoses($attendance_srl, $type) {
+		$arg = new stdClass();
+		$arg->attendance_srl = $attendance_srl;
+        $arg->wins = 2;
+		$output = executeQuery('attendance.updateWinsLoses', $arg); 
 		return $output;
 	}
 
@@ -347,6 +359,10 @@ class attendanceModel extends attendance
 		$arg->member_srl = $member_srl;
 		$output = executeQuery('attendance.getIsChecked', $arg);
 		$result = (int)$output->data->count;
+        if( (int)$output->data->count <= 0) {
+        } else {
+            $result = $output->data->attendance_srl;
+        }
 
 		if ($oCacheHandler)
 		{

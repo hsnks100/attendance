@@ -148,6 +148,59 @@ class attendanceController extends attendance
 			return;
 		}
 	}
+	/**
+	 * @brief 승리 기록
+	 * @return Object
+	 **/
+	function procAttendanceAddWins()
+	{
+		$oAttendanceModel = getModel('attendance');
+		$logged_info = Context::get('logged_info');
+        $today = zDate(date('YmdHis'), "Ymd");
+		$arg = new stdClass();
+		$arg->day = $today;
+		$arg->member_srl = $logged_info->member_srl;
+		$output = executeQuery('attendance.getIsChecked', $arg);
+		$g_obj = Context::getRequestVars();
+
+        $doc_srl = $output->data->attendance_srl; 
+        $wins = $output->data->wins; 
+        $loses = $output->data->loses; 
+		$arg = new stdClass();
+        $arg->attendance_srl = $doc_srl;
+        $arg->wins = $wins + $g_obj->win_count;
+        $arg->loses = $loses;
+		$output = executeQuery('attendance.updateWins', $arg);
+        $returnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'mid', 'attendance');
+        header('location: ' . $returnUrl);
+        return;
+	}
+	/**
+	 * @brief 패 기록
+	 * @return Object
+	 **/
+	function procAttendanceAddLoses()
+	{
+		$oAttendanceModel = getModel('attendance');
+		$logged_info = Context::get('logged_info');
+        $today = zDate(date('YmdHis'), "Ymd");
+		$arg = new stdClass();
+		$arg->day = $today;
+		$arg->member_srl = $logged_info->member_srl;
+		$output = executeQuery('attendance.getIsChecked', $arg);
+		$g_obj = Context::getRequestVars();
+
+        $doc_srl = $output->data->attendance_srl; 
+        $wins = $output->data->wins; 
+        $loses = $output->data->loses; 
+		$arg = new stdClass();
+        $arg->attendance_srl = $doc_srl;
+        $arg->wins = $wins;
+        $arg->loses = $loses + $g_obj->lose_count;
+		$output = executeQuery('attendance.updateWins', $arg);
+        $returnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'mid', 'attendance');
+        header('location: ' . $returnUrl);
+	}
 
 
 	/**

@@ -13,6 +13,8 @@
 		<column name="present_y" var="present_y" />
 		<column name="att_random_set" var="att_random_set" />
 		<column name="a_continuity" var="a_continuity" />
+		<column name="wins" var="wins" />
+		<column name="loses" var="loses" />
 	</columns>
 	<conditions>
 		<condition operation="equal" column="attendance_srl" var="attendance_srl"  />
