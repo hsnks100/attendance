@@ -84,42 +84,34 @@
 				<h4>{$lgi->nick_name} 님은</a><block cond="$mi->logo_image"><img style="margin-bottom:-10px;" src="{$mi->logo_image}" />에서</block> 출석이 완료되었습니다.</h4>
 				출석은 하루 1회만 참여하실 수 있습니다. 내일 다시 출석해 주세요.^^
 			</div>
-            <div class="x">
-                <form action="./" method="post" id="click_button" style="text-align:center" class="write_author" >
+            <div class="x" style="text-align:center">
+                <form action="./" method="post" id="click_button" style="text-align:center;display: inline" class="write_author" >
                     <input type="hidden" name="mid" value="{$mid}" />
                     <input type="hidden" name="act" value="procAttendanceAddWins" />
                     <input type="hidden" name="win_count" value="1" />
                     <input type="hidden" name="xe_validator_id" value="modules/attendance/skins/default/attendanceinsert" /> 
-                    <span class="x_input-append" style="width:100%; display:inline-block"> 
                         <button type="submit" class="x_btn x_btn-inverse">승+</button>
-                    </span>
                 </form>
-                <form action="./" method="post" id="click_button" style="text-align:center" class="write_author" >
+                <form action="./" method="post" id="click_button" style="text-align:center;display: inline;" class="write_author" >
                     <input type="hidden" name="mid" value="{$mid}" />
                     <input type="hidden" name="act" value="procAttendanceAddWins" />
                     <input type="hidden" name="win_count" value="-1" />
                     <input type="hidden" name="xe_validator_id" value="modules/attendance/skins/default/attendanceinsert" /> 
-                    <span class="x_input-append" style="width:100%; display:inline-block"> 
                         <button type="submit" class="x_btn x_btn-inverse">승-</button>
-                    </span>
                 </form>
-                <form action="./" method="post" id="click_button" style="text-align:center" class="write_author" >
+                <form action="./" method="post" id="click_button" style="text-align:center; display: inline" class="write_author" >
                     <input type="hidden" name="mid" value="{$mid}" />
                     <input type="hidden" name="lose_count" value="1" />
                     <input type="hidden" name="act" value="procAttendanceAddLoses" />
                     <input type="hidden" name="xe_validator_id" value="modules/attendance/skins/default/attendanceinsert" /> 
-                    <span class="x_input-append" style="width:100%; display:inline-block"> 
                         <button type="submit" class="x_btn x_btn-inverse">패+</button>
-                    </span>
                 </form>
-                <form action="./" method="post" id="click_button" style="text-align:center" class="write_author" >
+                <form action="./" method="post" id="click_button" style="text-align:center; display: inline" class="write_author" >
                     <input type="hidden" name="mid" value="{$mid}" />
                     <input type="hidden" name="lose_count" value="-1" />
                     <input type="hidden" name="act" value="procAttendanceAddLoses" />
                     <input type="hidden" name="xe_validator_id" value="modules/attendance/skins/default/attendanceinsert" /> 
-                    <span class="x_input-append" style="width:100%; display:inline-block"> 
                         <button type="submit" class="x_btn x_btn-inverse">패-</button>
-                    </span>
                 </form>
             </div>
 		<!--@end-->

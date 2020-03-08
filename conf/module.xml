@@ -62,6 +62,7 @@
 		<action name="dispAttendanceMemberInfo" type="view" standalone="true" />
 		<action name="dispAttendanceBoardGiftList" type="view" standalone="true" />
 		<action name="dispAttendanceMobileModifyAttendance" type="mobile" />
+		<action name="dispAttendanceDay" type="view" standalone="true" />
 
 		<!-- user controller -->
 		<action name="procAttendanceCheckData" type="controller" standalone="true" />

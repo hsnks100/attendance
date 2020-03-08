@@ -57,7 +57,7 @@ class attendanceView extends attendance
 	/**
 	 * @brief Display the attendance board.
 	 */
-	function dispAttendanceBoard()
+	public function dispAttendanceBoard()
 	{
 		$oMemberModel = getModel('member');
 		$oDocumentModel = getModel('document');
@@ -221,5 +221,50 @@ class attendanceView extends attendance
 		Context::set('member_data', $member_data);
 
 		$this->setTemplateFile('member_info');
+	}
+	function dispAttendanceDay()
+	{
+        // $this->dispAttendanceBoard();
+        // return;
+		$oAttendanceAdminModel = getAdminModel('attendance');
+
+		if (!Context::get('selected_date'))
+		{
+			$selected_date = zDate(date('YmdHis'), "Ymd");
+		}
+		else
+		{
+			$selected_date = Context::get('selected_date');
+		}
+
+		$user_data = $oAttendanceAdminModel->getAttendanceMemberList(20, 'day');
+
+		$year = substr($selected_date, 0, 4);
+		$month = substr($selected_date, 4, 2);
+		$day = substr($selected_date, 6, 2);
+		$end_day = date('t', mktime(0, 0, 0, $month, 1, $year));
+		$check_month = sprintf("%s%s", $year, $month);
+
+		$arrayUserData = array();
+		foreach ($user_data->data as $data)
+		{
+			$arrayUserData[$data->member_srl] = new stdClass();
+			$arrayUserData[$data->member_srl]->doChecked = getModel('attendance')->getIsCheckedMonth($data->member_srl, $check_month);
+		}
+
+		$oMemberModel = getModel('member');
+		$group_list = $oMemberModel->getGroups();
+
+		Context::set('group_list', $group_list);
+		Context::set('end_day', $end_day);
+		Context::set('year', $year);
+		Context::set('selected', $selected_date);
+		Context::set('month', $month);
+		Context::set('day', $day);
+		Context::set('arrayUserData', $arrayUserData);
+		Context::set('user_data', $user_data);
+		$this->setTemplatePath($this->module_path . 'tpl');
+		$this->setTemplateFile("userday");
+		// $this->setTemplateFile('day');
 	}
 }
